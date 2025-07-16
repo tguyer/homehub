@@ -9,6 +9,6 @@ echo "➡️  Building production version of React app..."
 npm run build
 
 echo "📦 Copying build folder to prod..."
-cp -r build/* ${TARGET}
+sudo cp -r build/* ${TARGET}
 
 echo "✅ Deployed to PRODUCTION"
