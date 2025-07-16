@@ -1,38 +1,151 @@
+/* GLOBAL RESET */
+body, html, .App {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+}
+
+/* APP LAYOUT */
 .App {
-  text-align: center;
+  display: flex;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* DRAWER */
+.side-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #111; /* darker base */
+  transition: width 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  border-right: 1px solid #2c2c2c;
 }
 
-.App-link {
-  color: #61dafb;
+.side-drawer.closed {
+  width: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.side-drawer.open {
+  width: 250px;
+}
+
+/* HAMBURGER */
+.hamburger {
+  width: 50px;
+  height: 50px;
+  font-size: 22px;
+  background-color: transparent;
+  color: #f5f5f5;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* MENU STYLES */
+.drawer-content {
+  padding: 20px;
+  width: 100%;
+}
+
+.drawer-content h2 {
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+
+.drawer-top {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.drawer-section ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.drawer-top li,
+.drawer-section li {
+  margin: 12px 0;
+}
+
+.drawer-top a,
+.drawer-section a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 18.2px;
+  transition: color 0.2s ease;
+}
+
+.drawer-top a:hover,
+.drawer-section a:hover {
+  color: #fff;
+}
+
+/* SECTION HEADERS */
+.drawer-section {
+  margin-bottom: 32px;
+}
+
+.drawer-section h3 {
+  margin: 0 0 10px 0;
+  font-size: 20.8px;
+  color: #aaa;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+  padding-bottom: 4px;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  padding: 24px;
+  margin-left: 50px;
+  transition: margin-left 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .side-drawer.open ~ .main-content {
+    margin-left: 250px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* BACKDROP FOR MOBILE */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: none;
+}
+
+.backdrop.show {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .backdrop {
+    display: none !important;
   }
+}
+
+.drawer-content a svg {
+  margin-right: 8px;
+  vertical-align: middle;
 }
