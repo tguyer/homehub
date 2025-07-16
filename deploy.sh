@@ -1,5 +1,5 @@
 #!/bin/bash
-PROD_TARGET="/var/www/prod"
+PROD_TARGET="/var/www/html/"
 
 # TODO: Eventually enable flags for dev environments
 TARGET=${PROD_TARGET}
